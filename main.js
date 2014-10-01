@@ -4,7 +4,7 @@ var authors = [];
 var earthpornUrls = [];
 var titlePattern = /"[\S\s]{1,}?"/g;
 
-var changeInterval = 10000;
+var timePerLetter = 100;
 var currentQuote = 0;
 var redditLastId = "";
 
@@ -27,7 +27,8 @@ function changeQuote(){
         return;
     }
     
-    setTimeout(changeQuote, changeInterval);
+    //Set the time we display the current quote by the number of letters in the current one
+    setTimeout(changeQuote, (quotes[currentQuote].length + authors[currentQuote].length) * timePerLetter);
 }
 
 function loadEarthporn(){
