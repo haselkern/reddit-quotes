@@ -2,23 +2,56 @@
 <html>
     <head>
         <title>'Quotes' by haselkern</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:700' rel='stylesheet' type='text/css'>
-        <script src="main.js"></script>
         <link rel="icon" type="image/png" href="icon.png">
         <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="main.js"></script>
     </head>
     <body>
-        <img id="background" src=""/>
-        <div id="src">
+        <!--<div id="src">
             Quotes from <a href="http://reddit.com/r/quotes">/r/quotes</a>
             Pictures from <a href="http://reddit.com/r/quotes">/r/earthporn</a><br>
 	    Take a look at the <a href="https://github.com/haselkern/reddit-quotes">source code on GitHub</a>.
+        </div>-->
+        
+        <div id="menu">
+            <table>
+                <tr>
+                    <td>
+                        <a href="https://www.reddit.com/r/quotes">
+                        Quotes<br><img src="ic_format_quote.svg" />
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://www.reddit.com/r/earthporn">
+                        Pictures<br><img src="ic_photo_library.svg" />
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://github.com/haselkern/reddit-quotes">
+                        Source<br><img src="ic_code.svg" />
+                        </a>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <div>
-            <div id="quote">Loading...</div>
-            <div id="author">by haselkern</div>
+        
+        <div class="quote quote1">
+            <div class="text">
+                <div class="text-quote">loading...</div>
+                <div class="text-author">by haselkern</div>
+            </div>
         </div>
+        
+        <div class="quote quote2">
+            <div class="text">
+                <div class="text-quote">Quotes</div>
+                <div class="text-author">by haselkern<br>click anywhere to show the menu</div>
+                <!-- TODO actually show a menu -->
+            </div>
+        </div>
+        
     </body>
 </html>
