@@ -1,15 +1,20 @@
-var redditTitles = [];
-var quotes = [];
-var authors = [];
-var earthpornUrls = [];
 var titlePattern = /"[\S\s]{1,}?"/g;
 
 var timePerLetter = 100;
-var currentQuote = 0;
 var redditLastId = "";
 
-var quoteCard = 1;
 var quoteCardTransitionDuration = 1000; // This should match css element .quote-onscreen
+var splashScreenDuration = 3000; // Should give a bit of time for data to load
+
+// Runtime variables
+var firstLaunch = true;
+var quoteCard = 1;
+var currentQuote = 0;
+
+var redditTitles = [];
+var earthpornUrls = [];
+var quotes = [];
+var authors = [];
 
 $(document).ready(function(){
     loadAnotherPage();
@@ -66,13 +71,21 @@ function changeQuote(){
     
     //Do we have to load another page from reddit?
     if(currentQuote > quotes.length){
-        $("#quote").html("Loading more");
         loadAnotherPage();
-        return;
     }
     
-    //Set the time we display the current quote by the number of letters in the current one
-    setTimeout(changeQuote, (quotes[currentQuote-1].length + authors[currentQuote-1].length) * timePerLetter);
+    // Set the time we display the current quote by the number of letters in the current one
+    var quoteText = quotes[currentQuote-1];
+    var authorText = authors[currentQuote-1];
+    var changeTime = 0;
+    if(quoteText && authorText)
+        changeTime = (quoteText.length + authorText.length) * timePerLetter;
+    // Reduce wait time on launch
+    if(firstLaunch){
+        changeTime = splashScreenDuration;
+        firstLaunch = false;
+    }
+    setTimeout(changeQuote, changeTime);
 }
 
 function loadEarthporn(){
@@ -85,7 +98,6 @@ function loadEarthporn(){
             }
         }
         setBackground();
-        console.log(earthpornUrls);
     });
 }
 
@@ -116,7 +128,9 @@ function loadAnotherPage(){
             }
         }
         
-        changeQuote();
+        if(firstLaunch){
+            changeQuote();
+        }
     });
 }
 
