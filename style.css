@@ -34,7 +34,7 @@ html, body, *{
     
     background-color: rgba(0, 0, 0, 0.4);
     background-position: center center;
-    box-shadow: 0 0 200px 200px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px 100vh rgba(0, 0, 0, 0.4);
 }
 .text-quote, .text-author{
     display: inline-block;
